@@ -4,6 +4,7 @@ import { Button } from '@chakra-ui/react'
 import Subject from "./Subject"
 import useStore from "../store"
 import { useEffect } from "react"
+import {TbReload} from "react-icons/tb"
 
 const selector = state => ({
     subjects: state.subjects,
@@ -17,14 +18,20 @@ export default function Timetable() {
     const handleGenerate = () => {
         generateTimetable()
     }
+    useEffect(()=>{
+        generateTimetable()
+    }, [])
     useEffect(() => {
-        console.log(timetable);
+        // console.log(timetable);
     }, [timetable])
     return (
         <Wrapper>
             <div className="title">
                 <Heading size={'lg'}>Timetable</Heading>
-                <Button colorScheme='purple' onClick={handleGenerate}>Regenerate</Button>
+                <Button leftIcon={<TbReload/>} colorScheme='purple' onClick={handleGenerate}>
+                    
+                    Regenerate
+                    </Button>
             </div>
             <div className="timetable">
                 <table>
@@ -183,7 +190,6 @@ const Wrapper = styled.div`
             }
         }
         .subjects{
-            border: 1px solid red;
             height: calc(100% - 30px);
             width: calc(100% - 100px);
             position: absolute;

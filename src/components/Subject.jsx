@@ -33,6 +33,7 @@ const Wrapper = styled.div`
     margin: 15px 0;
     color: white;
     position: absolute;
+    overflow: hidden;
     .name{
         font-size: 12px;
         font-style: normal;

@@ -26,6 +26,8 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background: #F3F3F3;
+  min-width: 1250px;
+  overflow: auto;
   main{
     max-width: 1200px;
     width: 100%;

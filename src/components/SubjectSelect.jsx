@@ -10,6 +10,7 @@ export default function SubjectSelect({ subject }) {
     const handleOnChange = (e) =>{
         setSubjectDurationPerWeek(subject.name, e.target.value)
     }
+    // console.log(subject);
     return (
         <Wrapper style={{
             background: subjectColors[subject.name]

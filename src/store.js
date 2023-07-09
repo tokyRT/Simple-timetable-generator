@@ -6,7 +6,7 @@ const useStore = create((set, get) => {
         subjects: [
             {
                 name: "Algorithme",
-                durationPerWeek: 3
+                durationPerWeek: 6
             },
             {
                 name: "SGBD",
@@ -18,11 +18,11 @@ const useStore = create((set, get) => {
             },
             {
                 name: "Admin Sys et reseau",
-                durationPerWeek: 2
+                durationPerWeek: 4
             },
             {
                 name: "Communication",
-                durationPerWeek: 2
+                durationPerWeek: 4
             },
             {
                 name: "Anglais",
@@ -32,7 +32,7 @@ const useStore = create((set, get) => {
         setSubjectDurationPerWeek: (name, duration) => {
             const subjects = get().subjects
             const index = subjects.findIndex(subject => subject.name === name)
-            subjects[index].durationPerweek = duration
+            subjects[index].durationPerWeek = duration
             set({
                 subjects: subjects
             })
@@ -45,7 +45,7 @@ const useStore = create((set, get) => {
             {}, //friday
         ],
         generateTimetable: () => {
-            const subjects = get().subjects
+            const subjects = JSON.parse(JSON.stringify(get().subjects))
             const availableSlots = [
                 ["8-12", "14-18"],
                 ["8-12", "14-18"],
