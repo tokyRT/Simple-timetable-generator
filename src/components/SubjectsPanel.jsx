@@ -36,6 +36,6 @@ const Wrapper = styled.div`
         font-size: 24px;
     }
     .subjects{
-        margin-top: 40px;
+        margin-top: 80px;
     }
 `
