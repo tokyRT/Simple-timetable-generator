@@ -18,6 +18,7 @@ export default function Timetable() {
                             <th><span>8h</span></th>
                             <th><span>9h</span></th>
                             <th><span>10h</span></th>
+                            <th><span>11h</span></th>
                             <th><span>12h</span></th>
                             <th><span>14h</span></th>
                             <th><span>15h</span></th>
@@ -92,7 +93,7 @@ export default function Timetable() {
                 </table>
                 <div className="subjects">
                     <div className="day">
-                        <Subject className="subject" name="Algorithme" duration={2}/>
+                        <Subject className="subject" name="Algorithme" start={14} end={16}/>
                     </div>
                 </div>
             </div>
@@ -135,7 +136,7 @@ const Wrapper = styled.div`
             td{
                 border: 1px solid #F2F2F2;
                 height: 80px;
-                width: 85px;
+                width: 72px;
                 &:first-of-type{
                     /* text-align: right; */
                     padding: 20px;
@@ -145,8 +146,8 @@ const Wrapper = styled.div`
                     color: #767676;
                 }
                 &:last-child{
-                    border: none;
-                    width: 1px;
+                    /* border: none;
+                    width: 1px; */
                 }
             }
         }
@@ -157,6 +158,11 @@ const Wrapper = styled.div`
             position: absolute;
             top: 30px;
             left: 100px;
+            .day{
+                position: relative;
+                height: 80px;
+                border: 1px solid blue;
+            }
         }
     }
 `

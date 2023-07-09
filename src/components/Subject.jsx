@@ -1,13 +1,20 @@
 import subjectColors from "../subjectColors"
 import styled from "@emotion/styled"
 
+const left = (start) => {
+    let step = start - 8;
+    if(start >= 14) step -= 1;
+    return step * 72;
 
-export default function Subject({name, duration}){
+}
+
+export default function Subject({name, start, end}){
     return (
         <Wrapper style={{
             background: subjectColors[name],
-            width: `${duration * 80}px`,
-            marginLeft: '2px'
+            width: `${(end-start) * 72}px`,
+            // marginLeft: '2px',
+            left: `${left(start)}px`
         }}>
             <span className="name">
                 {name}
@@ -25,6 +32,7 @@ const Wrapper = styled.div`
     justify-content: space-between;
     margin: 15px 0;
     color: white;
+    position: absolute;
     .name{
         font-size: 12px;
         font-style: normal;
