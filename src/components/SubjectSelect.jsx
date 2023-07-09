@@ -24,7 +24,7 @@ export default function SubjectSelect({ subject }) {
                 size={'sm'}
                 bg='white'
                 borderRadius={'7px'}
-                value={subject.durationPerweek}
+                value={subject.durationPerWeek}
                 onChange={handleOnChange}
             >
                 <option value="2">2h</option>

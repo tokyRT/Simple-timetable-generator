@@ -1,31 +1,32 @@
 import { create } from "zustand"
+import { generateTimetable } from "./utils/generate"
 
 const useStore = create((set, get) => {
     return {
         subjects: [
             {
                 name: "Algorithme",
-                durationPerweek: 3
+                durationPerWeek: 3
             },
             {
                 name: "SGBD",
-                durationPerweek: 2
+                durationPerWeek: 2
             },
             {
                 name: "Dev Web",
-                durationPerweek: 2
+                durationPerWeek: 2
             },
             {
                 name: "Admin Sys et reseau",
-                durationPerweek: 2
+                durationPerWeek: 2
             },
             {
                 name: "Communication",
-                durationPerweek: 2
+                durationPerWeek: 2
             },
             {
                 name: "Anglais",
-                durationPerweek: 2
+                durationPerWeek: 2
             },
         ],
         setSubjectDurationPerWeek: (name, duration) => {
@@ -34,6 +35,28 @@ const useStore = create((set, get) => {
             subjects[index].durationPerweek = duration
             set({
                 subjects: subjects
+            })
+        }, 
+        timetable: [
+            {}, //monday
+            {}, //tuesday
+            {}, //wednesday
+            {}, //thursday
+            {}, //friday
+        ],
+        generateTimetable: () => {
+            const subjects = get().subjects
+            const availableSlots = [
+                ["8-12", "14-18"],
+                ["8-12", "14-18"],
+                ["8-12", "14-18"],
+                ["8-12", "14-18"],
+                ["8-12", "14-18"],
+            ]
+            const maxCourseDuration = 2
+            const timetable = generateTimetable(subjects, availableSlots, maxCourseDuration)
+            set({
+                timetable: timetable
             })
         }
     }

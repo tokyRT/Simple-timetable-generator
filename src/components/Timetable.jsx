@@ -2,13 +2,29 @@ import styled from "@emotion/styled"
 import { Heading } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import Subject from "./Subject"
+import useStore from "../store"
+import { useEffect } from "react"
+
+const selector = state => ({
+    subjects: state.subjects,
+    timetable: state.timetable,
+    generateTimetable: state.generateTimetable,
+
+})
 
 export default function Timetable() {
+    const { timetable, generateTimetable } = useStore(selector)
+    const handleGenerate = () => {
+        generateTimetable()
+    }
+    useEffect(() => {
+        console.log(timetable);
+    }, [timetable])
     return (
         <Wrapper>
             <div className="title">
                 <Heading size={'lg'}>Timetable</Heading>
-                <Button colorScheme='purple'>Regenerate</Button>
+                <Button colorScheme='purple' onClick={handleGenerate}>Regenerate</Button>
             </div>
             <div className="timetable">
                 <table>
@@ -92,9 +108,24 @@ export default function Timetable() {
                     </tbody>
                 </table>
                 <div className="subjects">
-                    <div className="day">
-                        <Subject className="subject" name="Algorithme" start={14} end={16}/>
-                    </div>
+                    {
+                        timetable.map((day, index) => (
+                            <div className="day" key={index}>
+                                {
+                                    Object.keys(day).map((hour, index) => (
+                                        <Subject
+                                            className="subject"
+                                            key={index}
+                                            name={day[hour]}
+                                            start={hour.split('-')[0]}
+                                            end={hour.split('-')[1]}
+                                        />
+                                    ))
+                                }
+                            </div>
+                        ))
+
+                    }
                 </div>
             </div>
         </Wrapper>
@@ -161,7 +192,6 @@ const Wrapper = styled.div`
             .day{
                 position: relative;
                 height: 80px;
-                border: 1px solid blue;
             }
         }
     }
